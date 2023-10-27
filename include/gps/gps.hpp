@@ -1,39 +1,34 @@
 #ifndef _GPS_
 #define _GPS_
 
-#include <functional>
-#include "rclcpp/rclcpp.hpp"
 
-// opencv
-
-// ros message
-#include <sensor_msgs/msg/point_cloud2.hpp>
-#include <sensor_msgs/msg/image.hpp>
-
-#include <message_filters/sync_policies/approximate_time.h>
-#include <message_filters/subscriber.h>
-#include <string>
-
-#include <GeographicLib/LocalCartesian.hpp>
-#include <Eigen/Core>
-#include <vector>
+// C++ Standard Library
 #include <algorithm>
-#include <random>
+#include <functional>
 #include <iostream>
+#include <random>
+#include <string>
 #include <thread>
+#include <vector>
+#include <queue>
+
+// Eigen
+#include <Eigen/Core>
 #include <Eigen/Dense>
 
+// GeographicLib
+#include <GeographicLib/LocalCartesian.hpp>
+
+// PCL
+#include <pcl/filters/extract_indices.h>
 #include <pcl/point_types.h>
 #include <pcl/sample_consensus/ransac.h>
 #include <pcl/sample_consensus/sac_model_line.h>
-#include <pcl/visualization/cloud_viewer.h>
-#include <pcl/filters/extract_indices.h>
 #include <pcl/segmentation/progressive_morphological_filter.h>
 #include <pcl/segmentation/sac_segmentation.h>
+#include <pcl/visualization/cloud_viewer.h>
 #include <pcl/visualization/pcl_visualizer.h>
 
-#include <iomanip>
-#include <queue>
 
 class GPS
 {

@@ -5,8 +5,11 @@ std::shared_ptr<Eigen::Vector3d> GPS::Gnss2Enu(int filter_para,
                                                double longitude,
                                                double altitude)
 {
-    static pcl::visualization::CloudViewer viewer("cloud");
-    viewer.runOnVisualizationThread(std::bind(&GPS::VisualizationCallback, this, std::placeholders::_1));
+    //PCL可视化：绿点为GPS点，红点为内点
+    // static pcl::visualization::CloudViewer viewer("cloud");
+    // viewer.runOnVisualizationThread(std::bind(&GPS::VisualizationCallback, this, std::placeholders::_1));
+
+
     std::shared_ptr<Eigen::Vector3d> point_enu = std::make_shared<Eigen::Vector3d>();
     pcl::PointXYZ new_point;
     if (_is_first_time)
